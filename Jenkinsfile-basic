@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     when {
-                     expression { params.Version == 1.0 }
+                     expression { params.executeTests }
                     }
                     echo "Testing the application..."
                 }
