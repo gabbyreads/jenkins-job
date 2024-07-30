@@ -4,7 +4,7 @@ pipeline {
     agent any
     parameters {
         string(name : 'execName', defaultValue: 'Deploying in strings', description: 'this is groovy learn')
-        choice(name:'Version', choices:['1.0','1.0.1','1.0.2'], description:'Application version')
+        choice(name:'Version', choices:[1.0,1.0.1,1.0.2], description:'Application version')
         booleanParam(name:'executeTests', defaultValue:true, description:'')
     }
     stages {
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     when {
-                     expression { ${params.Version} == 1.0 }
+                     expression { params.Version == 1.0 }
                     }
                     echo "Testing the application..."
                 }
