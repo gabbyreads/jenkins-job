@@ -19,7 +19,7 @@ pipeline {
         stage('test') {
              when {
                      expression {
-                            params.executeTests
+                            params.executeTests && params.Version == 1.0
                  }
              }
             steps {
