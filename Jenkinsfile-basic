@@ -1,11 +1,17 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent none
+    agent any
+    parameters {
+        string(name : 'execName', defaultValue: 'Deploying in strings', description: 'this is groovy learn')
+        choice(name:'Version;, choices:['1.0','1.0.1','1.0.2'], description:'Application version')
+        booleanParam(name:'executeTests', defaultValue:true, description:'')
+    }
     stages {
         stage('build') {
             steps {
                 script {
+                    echo "in the string, i am ${params.execName}"
                     echo "Building the application..."
                 }
             }
