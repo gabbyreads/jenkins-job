@@ -19,6 +19,9 @@ pipeline {
         stage('test') {
             steps {
                 script {
+                    when {
+                     expression { ${params.Version} == '1.0' }
+                    }
                     echo "Testing the application..."
                 }
             }
