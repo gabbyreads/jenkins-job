@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     when {
-                     expression { params.executeTests }
+                     expression { ${params.executeTests} }
                     }
                     echo "Testing the application..."
                 }
