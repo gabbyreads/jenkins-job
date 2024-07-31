@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-
+dev gv
 pipeline {
   agent any
 
@@ -7,9 +7,17 @@ pipeline {
      maven 'maven'
   }
   stages {
+    stage('init'){
+      steps {
+          script{
+            gv = load "script.groovy"
+          }
+      }
+    }
     stage('build jar'){
       steps {
           script{
+            gv.getName()
             echo "Building jar fle"
             sh "mvn package"
           }
