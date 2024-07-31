@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-dev gv
+def gv
 pipeline {
   agent any
 
