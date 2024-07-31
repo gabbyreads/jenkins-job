@@ -1,4 +1,5 @@
-!#/usr/bash
+#!/usr/bin/env groovy
+
 pipeline {
   agent any
   stages {
