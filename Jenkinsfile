@@ -19,9 +19,21 @@ pipeline {
       steps {
           script{
             echo "Building a docker file"
-            sh "docker build -t my-pipeline-build:1.0 ."
+
+            withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+               sh 'docker build -t gabrielomokpo/my-pipeline:jma-1.0 .'
+               sh "echo $PASS | docker login -u $USER --password-stdin"
+              sh 'docker push gabrielomokpo/my-pipeline:jma-1.0'
+            }
           }
       }
+    }
+    stage('deploying'){
+       steps{
+         script{
+           echo 'deploying..'
+         }
+       }
     }
   }
 }
