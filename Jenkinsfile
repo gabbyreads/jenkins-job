@@ -2,10 +2,17 @@
 
 pipeline {
   agent any
+
+  tools{
+     maven 'maven'
+  }
   stages {
     stage('build'){
       steps {
-          echo "Hello world"
+          script{
+            echo "Building jar fle"
+            sh "mvn package"
+          }
       }
     }
   }
